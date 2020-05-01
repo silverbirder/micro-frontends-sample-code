@@ -1,0 +1,28 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:prod": "concurrently --names 'page,product,search' \\\"cd team-page && npm install\\\" \\\"cd team-product && npm install\\\" \\\"cd team-search && npm install\\\"",
+    "install:dev": "concurrently --names 'page,product,search' \\\"cd team-page && npm -D install\\\" \\\"cd team-product && npm -D install\\\" \\\"cd team-search && npm -D install\\\"",
+    "team-product:prod": "cd team-product && npm run start",
+    "team-search:prod": "cd team-search && npm run start",
+    "team-page:prod": "cd team-page && npm run start",
+    "team-product:dev": "cd team-product && npm run dev",
+    "team-search:dev": "cd team-search && npm run dev",
+    "team-page:dev": "cd team-page && npm run dev",
+    "start": "concurrently --names 'page,product,search' \"npm run team-page:prod\" \"npm run team-product:prod\" \"npm run team-search:prod\" \"npm run open -- http://localhost:3000\"",
+    "dev": "concurrently --names 'page,product,search' \"npm run team-page:dev\" \"npm run team-product:dev\" \"npm run team-search:dev\" \"npm run open -- http://localhost:3000\"",
+    "open": "sleepms 5000 && opener",
+    "deploy": "concurrently --names 'page,product,search' \\\"cd team-page && flyctl deploy\\\" \\\"cd team-product && flyctl deploy\\\" \\\"cd team-search && flyctl deploy\\\""
+  },
+  "author": "silverbirder",
+  "license": "MIT",
+  "dependencies": {
+    "@microfrontends/serve": "^11.2.0",
+    "concurrently": "^4.1.0",
+    "opener": "^1.5.1",
+    "sleep-ms": "^2.0.1"
+  }
+}
