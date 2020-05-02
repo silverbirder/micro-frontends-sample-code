@@ -11,8 +11,8 @@
     "build:prod": "webpack --mode=production --config=webpack.client.config.js && webpack --mode=production  --config=webpack.server.config.js",
     "build:dev": "webpack --mode=development --config=webpack.client.config.js && webpack --mode=development --config=webpack.server.config.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "silverbirder",
+  "license": "MIT",
   "dependencies": {
     "@podium/podlet": "^4.3.2",
     "esm": "^3.2.25",

@@ -12,8 +12,8 @@
     "build:dev": "webpack --mode=development --config=webpack.client.config.js && webpack --mode=development --config=webpack.server.config.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "silverbirder",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",

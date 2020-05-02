@@ -13,6 +13,8 @@
     "build:ssr": "ng build --prod && ng run team-checkout:server:production",
     "prerender": "ng run team-checkout:prerender"
   },
+  "author": "silverbirder",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.7",
