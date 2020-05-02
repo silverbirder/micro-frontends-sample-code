@@ -4,7 +4,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const config = {
   entry: [
       path.join(__dirname, 'src/entry-client-search-box.js'),
-      path.join(__dirname, 'src/entry-client-pagination.js')
   ],
   output: {
     filename: 'fragment.js',

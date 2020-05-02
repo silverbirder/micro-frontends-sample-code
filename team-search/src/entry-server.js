@@ -1,5 +1,4 @@
 import SearchBox from "./components/SearchBox";
-import Pagination from "./components/Pagination";
 import createApp from "./app";
 
 export default ctx => {
@@ -8,9 +7,6 @@ export default ctx => {
     switch (path) {
         case '/search/box':
             component = SearchBox;
-            break;
-        case '/search/pagination':
-            component = Pagination;
             break;
     }
     const {app, router, store} = createApp(component);
