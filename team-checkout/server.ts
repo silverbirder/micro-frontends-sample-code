@@ -8,9 +8,22 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+const Podlet = require('@podium/podlet');
+const cors = require('cors');
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
+  const podlet = new Podlet({
+    name: 'checkout',
+    version: '1.0.0',
+    pathname: '/',
+  });
+  server.use(podlet.middleware());
+  server.use(cors());
+  server.get(podlet.manifest(), (req, res) => {
+    res.status(200).send(podlet);
+  });
   const distFolder = join(process.cwd(), 'dist/team-checkout/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
@@ -38,7 +51,7 @@ export function app() {
 }
 
 function run() {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 3004;
 
   // Start up the Node server
   const server = app();

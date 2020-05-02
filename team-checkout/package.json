@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "dev:ssr": "ng run team-checkout:serve-ssr",
     "serve:ssr": "node dist/team-checkout/server/main.js",
-    "build:ssr": "ng build --prod && ng run team-checkout:server:production",
+    "build:ssr": "ng build --prod --deploy-url http://localhost:3004/ && ng run team-checkout:server:production",
     "prerender": "ng run team-checkout:prerender"
   },
   "author": "silverbirder",
@@ -27,7 +27,8 @@
     "@angular/platform-server": "~9.0.7",
     "@angular/router": "~9.0.7",
     "@nguniversal/express-engine": "^9.0.2",
-    "express": "^4.15.2",
+    "@podium/podlet": "^4.3.2",
+    "express": "^4.17.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

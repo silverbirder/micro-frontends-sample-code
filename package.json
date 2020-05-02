@@ -22,6 +22,7 @@
   "dependencies": {
     "@microfrontends/serve": "^11.2.0",
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "opener": "^1.5.1",
     "sleep-ms": "^2.0.1"
   }

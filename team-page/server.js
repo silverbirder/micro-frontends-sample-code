@@ -2,6 +2,7 @@ const express = require('express');
 const Layout = require('@podium/layout');
 const port = process.env.PORT || 3000;
 const teamSearchHost = process.env.TEAM_SEARCH_HOST || 'http://localhost:3003';
+const teamCheckoutHost = process.env.TEAM_CHECKOUT_HOST || 'http://localhost:3004';
 
 const layout = new Layout({
     name: 'page',
@@ -12,6 +13,10 @@ const podletSearch = layout.client.register({
     name: 'search',
     uri: `${teamSearchHost}/manifest.json`,
 });
+const podletCheckout = layout.client.register({
+    name: 'checkout',
+    uri: `${teamCheckoutHost}/manifest.json`,
+});
 
 const app = express();
 app.use(layout.middleware());
@@ -19,8 +24,9 @@ app.use('/static/', express.static('dist'));
 app.get(`${layout.pathname()}*`, async (req, res) => {
     const incoming = res.locals.podium;
 
-    const [searchBox] = await Promise.all([
+    const [searchBox, checkoutButton] = await Promise.all([
         podletSearch.fetch(incoming, {pathname: '/search/box', query: req.query}),
+        podletCheckout.fetch(incoming, {pathname: '/basketButton', query: req.query}),
     ]);
     res.podiumSend(`
         <html>
@@ -31,6 +37,7 @@ app.get(`${layout.pathname()}*`, async (req, res) => {
             <body>
                 <div id="app-shell">
                     ${searchBox.content}
+                    ${checkoutButton.content}
                 </div>
             </body>
         </html>
