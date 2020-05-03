@@ -71,3 +71,18 @@ $ curl https://team-product.fly.dev/manifest.json | jq .
     "proxy": {}
   }
 ```
+
+# Develop
+## Docker Compose
+```bash
+$ docker-compose up
+$ docker-compose stop
+```
+
+## npm script
+
+```bash
+$ npm install
+$ npm run install:prod
+$ npm run start
+```

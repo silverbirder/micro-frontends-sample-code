@@ -7,7 +7,6 @@ COPY package-lock.json .
 RUN npm install
 
 COPY . .
-RUN npm run build:prod
 
 ENV PORT=8080 \
     TEAM_SEARCH_HOST="https://team-search.fly.dev" \

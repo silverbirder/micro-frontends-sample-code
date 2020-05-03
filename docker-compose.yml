@@ -1,0 +1,21 @@
+version: "2"
+services:
+  team-page:
+    image: team-page
+    build: ./team-page/
+    environment:
+      - PORT=''
+      - TEAM_SEARCH_HOST=''
+      - TEAM_PRODUCT_HOST=''
+  team-product:
+    image: team-product
+    build: ./team-product/
+    environment:
+      - PORT=''
+      - HOST=''
+  team-search:
+    image: team-search
+    build: ./team-search/
+    environment:
+      - PORT=''
+      - HOST=''
