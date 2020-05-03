@@ -26,7 +26,7 @@ app.get(`${layout.pathname()}*`, async (req, res) => {
 
     const [searchBox, checkoutButton] = await Promise.all([
         podletSearch.fetch(incoming, {pathname: '/search/box', query: req.query}),
-        podletCheckout.fetch(incoming, {pathname: '/basketButton', query: req.query}),
+        podletCheckout.fetch(incoming, {pathname: '/basket', query: req.query}),
     ]);
     res.podiumSend(`
         <html>
