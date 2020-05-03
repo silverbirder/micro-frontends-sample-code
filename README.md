@@ -1,7 +1,7 @@
 # Micro Frontends Sample Code
 ## Overview
 
-![micro_frontends_sample](https://res.cloudinary.com/silverbirder/image/upload/v1588512356/micro-frontends-sample-code/micro_frontends_sample.jpg)
+![micro_frontends_sample](https://res.cloudinary.com/silverbirder/image/upload/v1588513402/micro-frontends-sample-code/micro_frontends_sample.jpg)
 http://team-page.fly.dev
 
 |Team|Javascript Framework|Concept|Component|Endpoint|
