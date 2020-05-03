@@ -14,6 +14,7 @@
   "author": "silverbirder",
   "license": "MIT",
   "dependencies": {
+    "@podium/browser": "^1.0.0-beta.2",
     "@podium/podlet": "^4.3.2",
     "esm": "^3.2.25",
     "express": "^4.17.1",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
+    "@babel/compat-data": "^7.9.6",
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",

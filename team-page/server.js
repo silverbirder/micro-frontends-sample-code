@@ -20,7 +20,6 @@ const podletProduct = layout.client.register({
 
 const app = express();
 app.use(layout.middleware());
-app.use('/static/', express.static('dist'));
 app.get(`${layout.pathname()}*`, async (req, res) => {
     const incoming = res.locals.podium;
 
@@ -34,7 +33,6 @@ app.get(`${layout.pathname()}*`, async (req, res) => {
         <html>
             <head>
                 <title>Shop</title>
-                <script src="/static/fragment.js" async></script>
                 ${searchBox.js.map(js => js.toHTML())}
                 ${items.js.map(js => js.toHTML())}
             </head>

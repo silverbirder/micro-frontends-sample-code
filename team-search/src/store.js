@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import {MessageBus} from '@podium/browser';
 
 Vue.use(Vuex);
 
@@ -7,6 +8,8 @@ const state = {
     keyword: '',
     productItems: [],
 };
+const messageBus = new MessageBus();
+
 const actions = {
     setKeyword(context, payload) {
         context.commit('setKeyword', payload.keyword);
@@ -17,13 +20,9 @@ const actions = {
             return data.name.match(new RegExp(payload.keyword)) !== null;
         });
         if (process.browser) {
-            window.postal.publish({
-                channel: 'search',
-                topic: 'search.word',
-                data: {
-                    items: hitItems
-                }
-            })
+            messageBus.publish('search', 'search.word', {
+                items: hitItems
+            });
         }
         context.commit('setProductItems', hitItems);
     },
