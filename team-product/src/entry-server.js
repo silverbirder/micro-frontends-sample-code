@@ -15,7 +15,7 @@ const podlet = new Podlet({
     pathname: '/product',
 });
 podlet.js([
-    {value: '/product/static/fragment.js'},
+    {value: '/product/static/fragment.js', async: true},
 ]);
 
 app.use(podlet.middleware());

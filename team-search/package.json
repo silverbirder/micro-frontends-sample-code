@@ -26,7 +26,6 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "@podium/layout": "^4.5.0",
     "@podium/podlet": "^4.3.2",
     "axios": "^0.19.2",
     "express": "^4.16.3",

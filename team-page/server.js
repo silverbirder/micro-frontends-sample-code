@@ -2,7 +2,7 @@ const express = require('express');
 const Layout = require('@podium/layout');
 const port = process.env.PORT || 3000;
 const teamSearchHost = process.env.TEAM_SEARCH_HOST || 'http://localhost:3003';
-const teamCheckoutHost = process.env.TEAM_CHECKOUT_HOST || 'http://localhost:3004';
+const teamProductHost = process.env.TEAM_PRODUCT_HOST || 'http://localhost:3002';
 
 const layout = new Layout({
     name: 'page',
@@ -13,9 +13,9 @@ const podletSearch = layout.client.register({
     name: 'search',
     uri: `${teamSearchHost}/manifest.json`,
 });
-const podletCheckout = layout.client.register({
-    name: 'checkout',
-    uri: `${teamCheckoutHost}/manifest.json`,
+const podletProduct = layout.client.register({
+    name: 'product',
+    uri: `${teamProductHost}/manifest.json`,
 });
 
 const app = express();
@@ -24,20 +24,24 @@ app.use('/static/', express.static('dist'));
 app.get(`${layout.pathname()}*`, async (req, res) => {
     const incoming = res.locals.podium;
 
-    const [searchBox, checkoutButton] = await Promise.all([
+    const [searchBox] = await Promise.all([
         podletSearch.fetch(incoming, {pathname: '/search/box', query: req.query}),
-        podletCheckout.fetch(incoming, {pathname: '/basket', query: req.query}),
+    ]);
+    const [items] = await  Promise.all([
+       podletProduct.fetch(incoming, {pathname: '/product/items', query: {id: searchBox.headers['x-decide-items']}})
     ]);
     res.podiumSend(`
         <html>
             <head>
                 <title>Shop</title>
-                <script src="/static/fragment.js"></script>
+                <script src="/static/fragment.js" async></script>
+                ${searchBox.js.map(js => js.toHTML())}
+                ${items.js.map(js => js.toHTML())}
             </head>
             <body>
                 <div id="app-shell">
                     ${searchBox.content}
-                    ${checkoutButton.content}
+                    ${items.content}
                 </div>
             </body>
         </html>
