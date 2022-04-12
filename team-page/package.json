@@ -10,7 +10,7 @@
   "author": "silverbirder",
   "license": "MIT",
   "dependencies": {
-    "@podium/layout": "^4.5.0",
+    "@podium/layout": "^4.6.110",
     "express": "^4.17.1"
   }
 }
