@@ -28,7 +28,7 @@
   "dependencies": {
     "@podium/browser": "^1.0.0-beta.2",
     "@podium/podlet": "^4.3.2",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "nodemon": "^1.18.4",
     "serialize-javascript": "^3.0.0",
     "vue": "^2.5.17",
